@@ -25,7 +25,7 @@ steps:
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/dotnet-terraform-docker-kubernetes-devops/infrastructure'
     backendAzureRmUseEnvironmentVariablesForAuthentication: false
-    backendServiceArm: 'Azure subscription 1(466ac917-28e6-4e2c-aa1e-f06061905b6d)'
+    backendServiceArm: 'azure-service-connection'
     backendAzureRmResourceGroupName: 'app-grp'
     backendAzureRmStorageAccountName: 'appstorageaccnt0909'
     backendAzureRmContainerName: 'terraformstate'
