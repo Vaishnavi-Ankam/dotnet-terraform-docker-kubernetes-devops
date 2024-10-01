@@ -1,0 +1,5 @@
+variable "location" {
+
+    default = "eastus"
+  
+}
