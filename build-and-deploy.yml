@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  tag: $(Build.BuildId)
+  
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
@@ -24,3 +27,6 @@ steps:
     repository: 'dotnetapp'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
+    tags: '$(tag)'
+
+
