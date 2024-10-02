@@ -21,6 +21,26 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
+# - task: Docker@2
+#   inputs:
+#     containerRegistry: 'docker-service-connection'
+#     repository: 'dotnetapp'
+#     command: 'buildAndPush'
+#     Dockerfile: '**/Dockerfile'
+#     tags: '$(tag)'
+
+
+# - task: KubernetesManifest@1
+#   inputs:
+#     action: 'deploy'
+#     connectionType: 'kubernetesServiceConnection'
+#     kubernetesServiceConnection: 'kube-service-connection'
+#     namespace: 'default'
+#     manifests: |
+#       $(System.DefaultWorkingDirectory)/**/deployment.yaml
+#       $(System.DefaultWorkingDirectory)/**/service.yaml
+#     containers: 'vaishuacr0909.azurecr.io/dotnetapp:225'
+
 - task: Docker@2
   inputs:
     containerRegistry: 'docker-service-connection'
@@ -29,14 +49,11 @@ steps:
     Dockerfile: '**/Dockerfile'
     tags: '$(tag)'
 
-
 - task: KubernetesManifest@1
   inputs:
     action: 'deploy'
     connectionType: 'kubernetesServiceConnection'
     kubernetesServiceConnection: 'kube-service-connection'
     namespace: 'default'
-    manifests: |
-      $(System.DefaultWorkingDirectory)/**/deployment.yaml
-      $(System.DefaultWorkingDirectory)/**/service.yaml
-    containers: 'vaishuacr0909.azurecr.io/dotnetapp:225'
+    manifests: '$(System.DefaultWorkingDirectory)/dotnet-terraform-docker-kubernetes-devops/manifests/deployment.yaml$(System.DefaultWorkingDirectory)/dotnet-terraform-docker-kubernetes-devops/manifests/service.yaml'
+    containers: 'vaishuacr0909.azurecr.io/dotnetapp:$(tag)'
