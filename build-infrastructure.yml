@@ -39,6 +39,17 @@ stages:
           - task: TerraformTaskV4@4
             inputs:
               provider: 'azurerm'
+              command: 'init'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/dotnet-terraform-docker-kubernetes-devops/infrastructure'
+              backendServiceArm: 'azure-service-connection'
+              backendAzureRmResourceGroupName: 'app-grp'
+              backendAzureRmStorageAccountName: 'appstorageaccnt0909'
+              backendAzureRmContainerName: 'terraformstate'
+              backendAzureRmKey: 'terraform-dev.tfstate'
+
+          - task: TerraformTaskV4@4
+            inputs:
+              provider: 'azurerm'
               command: 'destroy'
               workingDirectory: '$(System.DefaultWorkingDirectory)/dotnet-terraform-docker-kubernetes-devops/infrastructure'
               commandOptions: '-auto-approve'
