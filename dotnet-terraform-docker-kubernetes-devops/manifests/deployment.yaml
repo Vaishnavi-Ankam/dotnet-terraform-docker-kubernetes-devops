@@ -16,4 +16,4 @@ spec:
         - name: dotnetapp
           image: vaishuacr0909.azurecr.io/dotnetapp:$(tag)
           ports: 
-            - containerPort: 80
+            - containerPort: 8080
