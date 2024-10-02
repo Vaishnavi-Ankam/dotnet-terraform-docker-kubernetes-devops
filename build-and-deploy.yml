@@ -30,9 +30,9 @@ stages:
               Dockerfile: '**/Dockerfile'
               tags: '$(tag)'
 
-  - stage: DeployImage
+  - stage: DeployImageToAKS
     jobs:
-      - job:
+      - job: DeployImage
         steps:
           - task: KubernetesManifest@1
             inputs:
