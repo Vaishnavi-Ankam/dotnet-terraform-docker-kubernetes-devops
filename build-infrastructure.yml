@@ -41,4 +41,5 @@ stages:
               provider: 'azurerm'
               command: 'destroy'
               workingDirectory: '$(System.DefaultWorkingDirectory)/dotnet-terraform-docker-kubernetes-devops/infrastructure'
+              commandOptions: '-auto-approve'
               environmentServiceNameAzureRM: 'azure-service-connection'
