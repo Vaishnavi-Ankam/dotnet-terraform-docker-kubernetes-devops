@@ -21,13 +21,13 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: Docker@2
-  inputs:
-    containerRegistry: 'docker-service-connection'
-    repository: 'dotnetapp'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-    tags: '$(tag)'
+# - task: Docker@2
+#   inputs:
+#     containerRegistry: 'docker-service-connection'
+#     repository: 'dotnetapp'
+#     command: 'buildAndPush'
+#     Dockerfile: '**/Dockerfile'
+#     tags: '$(tag)'
 
 
 - task: KubernetesManifest@1
@@ -39,4 +39,4 @@ steps:
     manifests: |
       $(System.DefaultWorkingDirectory)/**/deployment.yaml
       $(System.DefaultWorkingDirectory)/**/service.yaml
-    containers: 'vaishuacr0909.azurecr.io/dotnetapp:$(tag)'
+    containers: 'vaishuacr0909.azurecr.io/dotnetapp:225'
