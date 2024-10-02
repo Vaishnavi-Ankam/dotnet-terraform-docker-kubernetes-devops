@@ -55,5 +55,7 @@ steps:
     connectionType: 'kubernetesServiceConnection'
     kubernetesServiceConnection: 'kube-service-connection'
     namespace: 'default'
-    manifests: '$(System.DefaultWorkingDirectory)/dotnet-terraform-docker-kubernetes-devops/manifests/deployment.yaml$(System.DefaultWorkingDirectory)/dotnet-terraform-docker-kubernetes-devops/manifests/service.yaml'
+    manifests: |
+      $(System.DefaultWorkingDirectory)/dotnet-terraform-docker-kubernetes-devops/manifests/deployment.yaml
+      $(System.DefaultWorkingDirectory)/dotnet-terraform-docker-kubernetes-devops/manifests/service.yaml
     containers: 'vaishuacr0909.azurecr.io/dotnetapp:$(tag)'
