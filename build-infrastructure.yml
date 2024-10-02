@@ -17,9 +17,9 @@ stages:
         steps:
           - bash: echo "Hello World !"
 
-  - stage: TerraformInitStage
+  - stage: BuildInfrastructureStage
     jobs:
-      - job: Init
+      - job: BuildInfrastructure
         steps:
           - task: TerraformTaskV4@4
             inputs:
@@ -31,11 +31,6 @@ stages:
               backendAzureRmStorageAccountName: 'appstorageaccnt0909'
               backendAzureRmContainerName: 'terraformstate'
               backendAzureRmKey: 'terraform-dev.tfstate'
-
-  - stage: TerraformApplyOrDestroy
-    jobs:
-      - job: ApplyOrDestroy
-        steps:
           - task: TerraformTaskV4@4
             inputs:
               provider: 'azurerm'
@@ -43,3 +38,5 @@ stages:
               workingDirectory: '$(System.DefaultWorkingDirectory)/dotnet-terraform-docker-kubernetes-devops/infrastructure'
               commandOptions: '-auto-approve'
               environmentServiceNameAzureRM: 'azure-service-connection'
+
+ 
