@@ -20,4 +20,6 @@ WORKDIR /app
 
 COPY --from=BUILD_IMAGE /source/out .
 
-CMD [ "dotnet", "dotnet_terraform_docker_kubernetes_devops.dll" ] 
+CMD [ "dotnet", "dotnet-terraform-docker-kubernetes-devops.dll" ] 
+
+
